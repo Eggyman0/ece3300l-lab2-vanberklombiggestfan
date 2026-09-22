@@ -13,7 +13,9 @@ module mult4 (
     wire [3:0] sum2;
     wire [3:0] sum3;
     
-    wire [2:0] carry;
+    wire [2:0] carry; 
+    
+    wire [2:0] unused_overflow;  
     
     assign p0 = A & B[0];
     assign p1 = A & B[1];
@@ -26,7 +28,7 @@ module mult4 (
         .Y(p2), 
         .S(sum1),
         .carryout(carry[0]), 
-        .ovf(0)
+        .ovf(unused_overflow[0])
     );
     
     add4 a2(
@@ -35,16 +37,16 @@ module mult4 (
         .Y(p3), 
         .S(sum2),
         .carryout(carry[1]), 
-        .ovf(0)
+        .ovf(unused_overflow[1])
     );
     
     add4 a3(
         .carryin(0), 
         .X({carry[1], p3[3:1]}), 
-        .Y(p4), 
+        .Y(p4),
         .S(sum3),
         .carryout(carry[2]), 
-        .ovf(0)
+        .ovf(unused_overflow[2])
     );
     
     assign X[0]     = p1[0];

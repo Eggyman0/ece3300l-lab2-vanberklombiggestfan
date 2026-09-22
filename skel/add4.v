@@ -1,14 +1,14 @@
 
 module add4 (
-	     input	      carryin,
+	     input	          carryin,
 	     input [3:0]      X, Y,
 	     output reg [3:0] S,
 	     output reg	      carryout,
 	     output reg	      ovf
 	     );
    
-   reg [4:0]		      C;
-   integer		      k;
+   reg [4:0] C;
+   integer   k;
    
    always @(X, Y, carryin)
      begin

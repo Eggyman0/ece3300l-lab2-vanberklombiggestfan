@@ -6,12 +6,9 @@ module addsub4 (
 	       output cout, ovf
 	       );
 
-   reg [3:0]		add;
-   
-   always @(A, B, subsel)
-    begin
-
-	(subsel = 1) ? add = ~B :  add = B;
+    wire [3:0] add;
+    
+	assign add = subsel ? ~B : B;
 
 	add4 adding(
 		.carryin(subsel),
@@ -20,8 +17,7 @@ module addsub4 (
 		.S(X),
 		.carryout(cout),
 		.ovf(ovf)
-	)
-    end
+	);
    
 endmodule
 

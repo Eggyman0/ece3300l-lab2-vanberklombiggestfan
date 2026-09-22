@@ -5,14 +5,30 @@ module calculator (
 		   output [9:0]	out
 		   );
 
-   wire				cout, ovf;  // carry_out and overflow
-   wire [3:0]			outa;  // adder output
-   wire [7:0]			outm;  // multiplier output
+    wire		cout, ovf;   // carry_out and overflow
+    wire [3:0]	outa;        // adder output
+    wire [7:0]	outm;        // multiplier output
 
-//
-// make instances of the three modules addsub4, mult4, and mux10
-// and wire them up to create the functionality required.
-//
+    addsub4 operation1(
+        .A(A),
+        .B(B),
+        .subsel(OP[0]),
+        .X(outa), 
+        .cout(cout), 
+        .ovf(ovf)
+    );
+    
+    mult4 operation2(
+        .A(A),
+        .B(B),
+        .X(outm)
+    );
+    
+    mux10 select(
+        .in0({ovf, cout, 4'b0, outa}),
+        .in1({2'b0, outm}),
+        .sel(OP[0]),
+        .out(out)
+    );
 	
 endmodule // calculator
-
