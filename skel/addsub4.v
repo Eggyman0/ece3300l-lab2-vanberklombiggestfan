@@ -1,4 +1,3 @@
-
 module addsub4 (
 	       input [3:0] A, B,
 	       input subsel,

@@ -27,7 +27,7 @@ module calculator (
     mux10 select(
         .in0({ovf, cout, 4'b0, outa}),
         .in1({2'b0, outm}),
-        .sel(OP[0]),
+        .sel(OP[1]),
         .out(out)
     );
 	
