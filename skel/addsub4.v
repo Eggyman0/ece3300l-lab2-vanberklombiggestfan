@@ -6,10 +6,22 @@ module addsub4 (
 	       output cout, ovf
 	       );
 
-//
-// fill in the verilog code here, using the add4 module,
-//   to implement both addition and subtraction.
-//
+   reg [3:0]		add;
+   
+   always @(A, B, subsel)
+    begin
+
+	(subsel = 1) ? add = ~B :  add = B;
+
+	add4 adding(
+		.carryin(subsel),
+		.X(A),
+		.Y(add),
+		.S(X),
+		.carryout(cout),
+		.ovf(ovf)
+	)
+    end
    
 endmodule
 
