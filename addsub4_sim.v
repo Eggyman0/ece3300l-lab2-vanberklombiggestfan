@@ -1,4 +1,4 @@
-module addsub4_sim ()
+module addsub4_sim ();
 reg [3:0] A;
 reg [3:0] B;
 reg subsel;
